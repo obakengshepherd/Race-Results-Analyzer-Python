@@ -21,12 +21,17 @@ def main():
         print("Error: race_data.csv not found!")
         return
     
-    print("\nRace Data:")
+    if not laps:
+        print("No valid lap data found.")
+        return
+    
+    print("\nRace Results:")
+    print(f"{'Driver':<15} {'Lap Time':<10}")
+    print("-" * 25)
     for lap in laps:
-        print(f"Driver: {lap['Driver']}, Lap Time: {lap['LapTime']}")
+        print(f"{lap['Driver']:<15} {lap['LapTime']:<10.2f}")
     avg_time = calculate_average_lap_time(laps)
-    print(f"Average Lap Time: {avg_time:.2f} seconds")
-    return laps
+    print(f"\nAverage Lap Time: {avg_time:.2f} seconds")
 
 if __name__ == "__main__":
     main()
