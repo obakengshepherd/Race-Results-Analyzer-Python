@@ -1,5 +1,11 @@
 import csv
 
+def calculate_average_lap_time(laps):
+    if not laps:
+        return 0
+    total = sum(lap['LapTime'] for lap in laps)
+    return total / len(laps)
+
 def main():
     laps = []
     try:
@@ -18,6 +24,8 @@ def main():
     print("\nRace Data:")
     for lap in laps:
         print(f"Driver: {lap['Driver']}, Lap Time: {lap['LapTime']}")
+    avg_time = calculate_average_lap_time(laps)
+    print(f"Average Lap Time: {avg_time:.2f} seconds")
     return laps
 
 if __name__ == "__main__":
