@@ -9,11 +9,15 @@ def main():
                 try:
                     lap_time = float(row['LapTime'])
                     laps.append({'Driver': row['Driver'], 'LapTime': lap_time})
-                    print(f"Driver: {row['Driver']}, Lap Time: {lap_time}")
                 except (ValueError, KeyError):
                     print(f"Skipping invalid row: {row}")
     except FileNotFoundError:
         print("Error: race_data.csv not found!")
+        return
+    
+    print("\nRace Data:")
+    for lap in laps:
+        print(f"Driver: {lap['Driver']}, Lap Time: {lap['LapTime']}")
     return laps
 
 if __name__ == "__main__":
