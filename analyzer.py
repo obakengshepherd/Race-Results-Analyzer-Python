@@ -1,12 +1,14 @@
 import csv
 
 def calculate_average_lap_time(laps):
+    """Calculate average lap time from a list of lap dictionaries. Returns 0 if empty."""
     if not laps:
         return 0
     total = sum(lap['LapTime'] for lap in laps)
     return total / len(laps)
 
 def main():
+    """Read race_data.csv, store lap data, calculate average lap time, print results."""
     laps = []
     try:
         with open('race_data.csv', 'r') as file:
